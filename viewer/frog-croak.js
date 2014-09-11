@@ -19,16 +19,10 @@
 
 // Perform setup for given configuration
 function config_setup(config) {
+
     //alert(JSON.stringify(config));
 
-    // Set title
-    document.title = config.title;
-    $('#title').text(config.title);
-
-    // Set organization
-    $('#organization').text(config.organization);
-
-    // Configure language.
+    // Configure language
     $.i18n.init({
         lng: config.lang,
         load: 'current',
@@ -37,6 +31,16 @@ function config_setup(config) {
     }, function(t) {
         $('.i18n').i18n();
     });
+
+    // Set title
+    document.title = config.title;
+    $('#title').text(config.title);
+
+    // Set organization
+    $('#organization').text(config.organization);
+
+    // Create calendar widgets
+    $('.calendar').datepicker();
 }
 
 // Get configuration file

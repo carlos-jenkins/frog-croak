@@ -4,19 +4,33 @@
     <meta charset="UTF-8">
     <meta name="generator" content="Frog Croak" />
 
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/i18next-1.7.4.min.js"></script>
-    <script type="text/javascript" src="js/dygraph-1.0.1.min.js"></script>
-    <script type="text/javascript" src="js/frog-croak.js"></script>
+    <script type="text/javascript" src="libs/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="libs/jquery-ui-1.11.1.min.js"></script>
+    <script type="text/javascript" src="libs/i18next-1.7.4.min.js"></script>
+    <script type="text/javascript" src="libs/dygraph-1.0.1.min.js"></script>
+    <script type="text/javascript" src="frog-croak.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.1.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body>
 
 <div id="main">
+
     <h1 id="title"></h1>
     <h2 id="organization"></h2>
+
+    <div id="graphs">
+        <div id="graphs_download"></div>
+        <div id="graphs_upload"></div>
+    </div>
+
+    <div id="toolbar">
+        <input type="text" id="range_begin" class="calendar">
+        <input type="text" id="range_end" class="calendar">
+    </div>
+
     <div><span id="upload" class="i18n" data-i18n="upload"></a></div>
 </div>
 
