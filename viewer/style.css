@@ -1,0 +1,76 @@
+/*
+ *  Frog Croak - Internet speed test log viewer and collector
+ *
+ *  Copyright (C) 2014 Carlos Jenkins <carlos@jenkins.co.cr>
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ */
+
+#main {
+    text-align: center;
+}
+
+body {
+    color: #555555;
+    font-family: Ubuntu, Arial, sans;
+    font-size: 18px;
+}
+
+a, a:visited {
+    -moz-transition: all 0.2s ease-in-out 0s;
+
+    color: #E44D26;
+    text-decoration: none;
+}
+
+a:hover, a:visited:hover {
+    color: #FF8D38;
+    background-color: #E0E0E0;
+}
+
+a.member {
+    background-color: #F5F5F5;
+    border: 2px solid #C0C0C0;
+    display: inline-block;
+    font-size: 1.4em;
+    margin: 0 10px;
+    padding: 25px 100px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #555555;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+h2 {
+    color: #555555;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+p {
+}
+
+div#graph {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 40px;
+    bottom: 10px;
+}
