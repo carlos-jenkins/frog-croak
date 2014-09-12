@@ -23,7 +23,7 @@
 
 body {
     color: #555555;
-    font-family: Ubuntu, Arial, sans;
+    font-family: "Ubuntu", sans-serif;
     font-size: 18px;
 }
 
@@ -37,19 +37,6 @@ a, a:visited {
 a:hover, a:visited:hover {
     color: #FF8D38;
     background-color: #E0E0E0;
-}
-
-a.member {
-    background-color: #F5F5F5;
-    border: 2px solid #C0C0C0;
-    display: inline-block;
-    font-size: 1.4em;
-    margin: 0 10px;
-    padding: 25px 100px;
-
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
 }
 
 h1 {

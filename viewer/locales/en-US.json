@@ -1,3 +1,15 @@
 {
-    "upload": "Upload"
+    "upload": "Upload",
+    "download": "Download",
+    "date": "Date",
+    "speed_mbps": "Speed (Mbps)",
+    "data_range": "Data range",
+    "begin": "Begin",
+    "end": "End",
+    "statistics": "Statistics",
+    "contracted" : "Contracted",
+    "average" : "Average",
+    "threshold" : "Threshold",
+    "minimum" : "Minimum",
+    "maximum" : "Maximum"
 }

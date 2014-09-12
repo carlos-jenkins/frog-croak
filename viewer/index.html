@@ -10,6 +10,8 @@
     <script type="text/javascript" src="libs/dygraph-1.0.1.min.js"></script>
     <script type="text/javascript" src="frog-croak.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" type="text/css" href="libs/normalize-3.0.1.css">
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui-1.11.1.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -27,11 +29,111 @@
     </div>
 
     <div id="toolbar">
-        <input type="text" id="range_begin" class="calendar">
-        <input type="text" id="range_end" class="calendar">
+
+        <table id="range">
+            <caption>
+                <span class="i18n" data-i18n="data_range"></span>
+            </caption>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="title i18n" data-i18n="begin"></span>
+                    </td>
+                    <td>
+                        <input type="text" id="range_begin" class="calendar">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="title i18n" data-i18n="end"></span>
+                    </td>
+                    <td>
+                        <input type="text" id="range_end" class="calendar">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="display">
+            <caption>
+                <span class="i18n" data-i18n="statistics"></span>
+            </caption>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        <span class="title i18n" data-i18n="download"></span>
+                    </th>
+                    <th>
+                        <span class="title i18n" data-i18n="upload"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="title i18n" data-i18n="contracted"></span>
+                    </td>
+                    <td>
+                        <span id="contracted_down"></span>
+                    </td>
+                    <td>
+                        <span id="contracted_up"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="title i18n" data-i18n="average"></span>
+                    </td>
+                    <td>
+                        <span id="average_down"></span>
+                    </td>
+                    <td>
+                        <span id="average_up"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="title i18n" data-i18n="threshold"></span>
+                    </td>
+                    <td>
+                        <span id="threshold_down"></span>
+                    </td>
+                    <td>
+                        <span id="threshold_up"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="title i18n" data-i18n="minimum"></span>
+                    </td>
+                    <td>
+                        <span id="minimum_down"></span>
+                    </td>
+                    <td>
+                        <span id="minimum_up"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="title i18n" data-i18n="maximum"></span>
+                    </td>
+                    <td>
+                        <span id="maximum_down"></span>
+                    </td>
+                    <td>
+                        <span id="maximum_up"></span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 
-    <div><span id="upload" class="i18n" data-i18n="upload"></a></div>
 </div>
 
 </body>

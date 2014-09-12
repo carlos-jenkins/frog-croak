@@ -17,6 +17,53 @@
  *  under the License.
  */
 
+// Create and configure graphs
+function config_graphs(t, config) {
+
+    // Create graphs
+    g1 = new Dygraph(
+
+        // Containing div
+        document.getElementById('graphs_download'),
+
+        // CSV file
+        config.data,
+
+        // Options
+        {
+            labels: [
+                t('date'),
+                t('download'),
+                t('upload')
+            ],
+            ylabel: t('speed_mbps'),
+            visibility: [true, false]
+        }
+    );
+
+        // Create graphs
+    g2 = new Dygraph(
+
+        // Containing div
+        document.getElementById('graphs_upload'),
+
+        // CSV file
+        config.data,
+
+        // Options
+        {
+            labels: [
+                t('date'),
+                t('download'),
+                t('upload')
+            ],
+            ylabel: t('speed_mbps'),
+            visibility: [false, true]
+        }
+    );
+}
+
+
 // Perform setup for given configuration
 function config_setup(config) {
 
@@ -30,6 +77,7 @@ function config_setup(config) {
         resGetPath: 'locales/__lng__.json'
     }, function(t) {
         $('.i18n').i18n();
+        config_graphs(t, config);
     });
 
     // Set title
