@@ -17,16 +17,42 @@
  *  under the License.
  */
 
+function threshold_painter(thr) {
+    return function(canvas, area, g) {
+
+        // Define points
+        var range = g.xAxisRange();
+        var p1 = g.toDomCoords(range[0], thr);
+        var p2 = g.toDomCoords(range[1], thr);
+
+        // Draw line
+        canvas.strokeStyle = 'red';
+        canvas.lineWidth = 1.0;
+        canvas.beginPath();
+        canvas.moveTo(p1[0], p1[1]);
+        canvas.lineTo(p2[0], p2[1]);
+        canvas.closePath();
+        canvas.stroke();
+        canvas.restore();
+    };
+}
+
 // Create and configure graphs
 function config_graphs(t, config) {
 
-    ['download', 'upload'].forEach(function(v, i, arr) {
+    var graphs = ['download', 'upload'];
+    var thresholds = [
+        config.download_guaranteed,
+        config.upload_guaranteed
+    ];
+
+    for (var i = 0; i < 2; i++) {
 
         // Create graph
         new Dygraph(
 
             // Containing div
-            document.getElementById('graph_' + v),
+            document.getElementById('graph_' + graphs[i]),
 
             // CSV file
             config.data,
@@ -39,11 +65,13 @@ function config_graphs(t, config) {
                     t('upload')
                 ],
                 ylabel: t('speed_mbps'),
-                visibility: [i === 0, i === 1]
+                visibility: [i === 0, i === 1],
+                underlayCallback: threshold_painter(thresholds[i]),
+                animatedZooms: true,
             }
         );
 
-    });
+    }
 }
 
 
@@ -51,6 +79,12 @@ function config_graphs(t, config) {
 function config_setup(config) {
 
     //alert(JSON.stringify(config));
+
+    // Change from relative to absolute units
+    config.download_guaranteed =
+        config.download_guaranteed * config.download_contracted;
+    config.upload_guaranteed =
+        config.upload_guaranteed * config.upload_contracted;
 
     // Configure language
     $.getScript(
@@ -81,13 +115,9 @@ function config_setup(config) {
 
     // Show config data
     $('#download_contracted').text(config.download_contracted);
-    $('#download_guaranteed').text(
-        config.download_guaranteed * config.download_contracted
-    );
+    $('#download_guaranteed').text(config.download_guaranteed);
     $('#upload_contracted').text(config.upload_contracted);
-    $('#upload_guaranteed').text(
-        config.upload_guaranteed * config.upload_contracted
-    );
+    $('#upload_guaranteed').text(config.upload_guaranteed);
 }
 
 // Get configuration file
