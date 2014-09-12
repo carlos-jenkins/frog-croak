@@ -20,47 +20,30 @@
 // Create and configure graphs
 function config_graphs(t, config) {
 
-    // Create download graph
-    g1 = new Dygraph(
+    ['download', 'upload'].forEach(function(v, i, arr) {
 
-        // Containing div
-        document.getElementById('graphs_download'),
+        // Create graph
+        new Dygraph(
 
-        // CSV file
-        config.data,
+            // Containing div
+            document.getElementById('graph_' + v),
 
-        // Options
-        {
-            labels: [
-                t('date'),
-                t('download'),
-                t('upload')
-            ],
-            ylabel: t('speed_mbps'),
-            visibility: [true, false]
-        }
-    );
+            // CSV file
+            config.data,
 
-    // Create upload graphs
-    g2 = new Dygraph(
+            // Options
+            {
+                labels: [
+                    t('date'),
+                    t('download'),
+                    t('upload')
+                ],
+                ylabel: t('speed_mbps'),
+                visibility: [i === 0, i === 1]
+            }
+        );
 
-        // Containing div
-        document.getElementById('graphs_upload'),
-
-        // CSV file
-        config.data,
-
-        // Options
-        {
-            labels: [
-                t('date'),
-                t('download'),
-                t('upload')
-            ],
-            ylabel: t('speed_mbps'),
-            visibility: [false, true]
-        }
-    );
+    });
 }
 
 

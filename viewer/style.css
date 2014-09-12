@@ -27,12 +27,12 @@
     margin: 10px;
 }
 
-#graphs_download {
+#graph_download {
     top: 10px;
     bottom: 50%;
 }
 
-#graphs_upload {
+#graph_upload {
     top: 50%;
     bottom: 10px;
 }
