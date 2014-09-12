@@ -20,20 +20,27 @@
 
 <div id="main">
 
-    <h1 id="title"></h1>
-    <h2 id="organization"></h2>
-
     <div id="graphs">
-        <div id="graphs_download"></div>
-        <div id="graphs_upload"></div>
+        <div class="graph" id="graphs_download"></div>
+        <div class="graph" id="graphs_upload"></div>
     </div>
 
     <div id="toolbar">
 
+        <div id="identity">
+            <h1 id="title"></h1>
+            <h2 id="organization"></h2>
+        </div>
+
         <table id="range">
-            <caption>
-                <span class="i18n" data-i18n="data_range"></span>
-            </caption>
+
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
             <tbody>
                 <tr>
                     <td>
@@ -52,12 +59,11 @@
                     </td>
                 </tr>
             </tbody>
+
         </table>
 
         <table id="display">
-            <caption>
-                <span class="i18n" data-i18n="statistics"></span>
-            </caption>
+
             <thead>
                 <tr>
                     <th></th>
@@ -69,6 +75,7 @@
                     </th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr>
                     <td>

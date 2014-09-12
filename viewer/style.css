@@ -17,10 +17,60 @@
  *  under the License.
  */
 
+/*
+ * STRUCTURAL
+ */
 #main {
+    width: 80%;
+    margin: 20px auto;
+    position: relative;
+}
+
+#graphs {
+}
+
+.graph {
+}
+
+#toolbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+}
+
+#toolbar table {
+    border-spacing: 5px;
+    border-collapse: separate;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#toolbar th:first-child {
+    width: 33%;
+}
+
+#toolbar td:first-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+#toolbar input.calendar {
+    width: 100%;
+}
+
+#identity {
     text-align: center;
 }
 
+#identity * {
+    margin: 0 0 10px 0;
+}
+
+
+/*
+ * BASIC STYLE
+ */
 body {
     color: #555555;
     font-family: "Ubuntu", sans-serif;
@@ -51,13 +101,7 @@ h2 {
     margin: 0;
 }
 
-p {
-}
-
-div#graph {
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    top: 40px;
-    bottom: 10px;
+table caption {
+    caption-side: bottom;
+    font-size: 0.7em;
 }
