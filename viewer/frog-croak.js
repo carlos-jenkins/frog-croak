@@ -45,6 +45,12 @@ function parse_date(string) {
 }
 
 
+// Pretty-print the speed value
+function format_speed(speed) {
+    return speed + ' Mbps';
+}
+
+
 // Create and configure graphs
 function config_graphs(t, config) {
 
@@ -78,6 +84,11 @@ function config_graphs(t, config) {
                 underlayCallback: threshold_painter(thresholds[i]),
                 animatedZooms: true,
                 xValueParser: parse_date,
+                axes: {
+                    y: {
+                        valueFormatter: format_speed,
+                    },
+                },
             }
         );
 
@@ -124,10 +135,10 @@ function config_setup(config) {
     $('.calendar').datepicker();
 
     // Show config data
-    $('#download_contracted').text(config.download_contracted);
-    $('#download_guaranteed').text(config.download_guaranteed);
-    $('#upload_contracted').text(config.upload_contracted);
-    $('#upload_guaranteed').text(config.upload_guaranteed);
+    $('#download_contracted').text(format_speed(config.download_contracted));
+    $('#download_guaranteed').text(format_speed(config.download_guaranteed));
+    $('#upload_contracted').text(format_speed(config.upload_contracted));
+    $('#upload_guaranteed').text(format_speed(config.upload_guaranteed));
 }
 
 // Get configuration file
