@@ -63,7 +63,6 @@ function config_graphs(t, config) {
     for (var i = 0; i < 2; i++) {
 
         // Create graph
-        // FIXME: valueFormatter: add Mbps as formatter
         new Dygraph(
 
             // Containing div
@@ -107,10 +106,35 @@ function config_setup(config) {
     config.upload_guaranteed =
         config.upload_guaranteed * config.upload_contracted;
 
+    // Set title
+    document.title = config.title;
+    $('#title').text(config.title);
+
+    // Set organization
+    $('#organization').text(config.organization);
+
+    // Show config data
+    $('#download_contracted').text(format_speed(config.download_contracted));
+    $('#download_guaranteed').text(format_speed(config.download_guaranteed));
+    $('#upload_contracted').text(format_speed(config.upload_contracted));
+    $('#upload_guaranteed').text(format_speed(config.upload_guaranteed));
+
     // Configure language
-    $.getScript(
-        'locales/' + config.lang + '.js'
-    );
+    /// Load calendar locales
+    $.getScript('locales/' + config.lang + '.js')
+    .done(function(script, status) {
+        $.datepicker.setDefaults(
+            $.datepicker.regional[config.lang]
+        );
+        // Create calendar widgets
+        // FIXME: Configure calendar
+        $('.calendar').datepicker();
+    })
+    .fail(function(xhr, opts, err) {
+        msg = xhr.status + ' :: '+ err;
+        console.log(msg);
+    });
+    /// Load localized text
     $.i18n.init({
         lng: config.lang,
         load: 'current',
@@ -120,26 +144,8 @@ function config_setup(config) {
         $('.i18n').i18n();
         config_graphs(t, config);
     });
-
-    // Set title
-    document.title = config.title;
-    $('#title').text(config.title);
-
-    // Set organization
-    $('#organization').text(config.organization);
-
-    // Create calendar widgets
-    $.datepicker.setDefaults(
-        $.datepicker.regional['es']
-    );
-    $('.calendar').datepicker();
-
-    // Show config data
-    $('#download_contracted').text(format_speed(config.download_contracted));
-    $('#download_guaranteed').text(format_speed(config.download_guaranteed));
-    $('#upload_contracted').text(format_speed(config.upload_contracted));
-    $('#upload_guaranteed').text(format_speed(config.upload_guaranteed));
 }
+
 
 // Get configuration file
 function config_load() {
