@@ -1,0 +1,13 @@
+{
+    "upload": "Subida",
+    "download": "Descarga",
+    "date": "Fecha",
+    "speed_mbps": "Velocidad (Mbps)",
+    "begin": "Inicio",
+    "end": "Fin",
+    "contracted" : "Contratada",
+    "average" : "Promedio",
+    "threshold" : "Garantizada",
+    "minimum" : "Minima",
+    "maximum" : "Maxima"
+}

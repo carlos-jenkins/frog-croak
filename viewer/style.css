@@ -21,7 +21,7 @@
  * STRUCTURAL
  */
 #main {
-    width: 80%;
+    width: 95%;
     margin: 20px auto;
     position: relative;
 }
@@ -36,7 +36,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 400px;
+    width: 320px;
 }
 
 #toolbar table {
@@ -53,6 +53,10 @@
 #toolbar td:first-child {
     text-align: right;
     padding-right: 10px;
+}
+
+#toolbar td:first-child::after {
+    content: ":";
 }
 
 #toolbar input.calendar {
@@ -74,7 +78,7 @@
 body {
     color: #555555;
     font-family: "Ubuntu", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 a, a:visited {
@@ -104,4 +108,22 @@ h2 {
 table caption {
     caption-side: bottom;
     font-size: 0.7em;
+}
+
+/* Theme calendar */
+.ui-datepicker {
+    background-color: white;
+    border: 1px solid #555555;
+}
+
+.ui-datepicker-prev:before {
+    content: "<<";
+}
+
+.ui-datepicker-next:before {
+    content: ">>";
+}
+.ui-datepicker-prev,
+.ui-datepicker-next {
+    text-align: center;
 }

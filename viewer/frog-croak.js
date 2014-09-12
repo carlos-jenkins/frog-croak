@@ -70,6 +70,9 @@ function config_setup(config) {
     //alert(JSON.stringify(config));
 
     // Configure language
+    $.getScript(
+        'locales/' + config.lang + '.js'
+    );
     $.i18n.init({
         lng: config.lang,
         load: 'current',
@@ -88,6 +91,9 @@ function config_setup(config) {
     $('#organization').text(config.organization);
 
     // Create calendar widgets
+    $.datepicker.setDefaults(
+        $.datepicker.regional['es']
+    );
     $('.calendar').datepicker();
 }
 
