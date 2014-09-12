@@ -78,6 +78,16 @@ function config_setup(config) {
         $.datepicker.regional['es']
     );
     $('.calendar').datepicker();
+
+    // Show config data
+    $('#download_contracted').text(config.download_contracted);
+    $('#download_guaranteed').text(
+        config.download_guaranteed * config.download_contracted
+    );
+    $('#upload_contracted').text(config.upload_contracted);
+    $('#upload_guaranteed').text(
+        config.upload_guaranteed * config.upload_contracted
+    );
 }
 
 // Get configuration file

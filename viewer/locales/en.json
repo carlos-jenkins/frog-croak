@@ -7,7 +7,7 @@
     "end": "End",
     "contracted" : "Contracted",
     "average" : "Average",
-    "threshold" : "Threshold",
+    "guaranteed" : "Guaranteed",
     "minimum" : "Minimum",
     "maximum" : "Maximum"
 }

@@ -23,7 +23,7 @@
 .graph {
     position: absolute;
     left: 10px;
-    right: 340px;
+    right: 360px;
     margin: 10px;
 }
 
@@ -40,11 +40,11 @@
 #toolbar {
     position: absolute;
     top: 10px;
-    right: 10px;
+    bottom: 10px;
+    right: 30px;
     width: 320px;
 
     border-left: 1px solid black;
-    height: 100%;
     padding-left: 10px;
 }
 
@@ -55,17 +55,17 @@
     margin-top: 50px;
 }
 
-#toolbar th,
-#toolbar td {
-    padding-bottom: 10px;
-}
-
 #toolbar th:first-child {
     width: 35%;
 }
 
-#toolbar td:first-child {
+#toolbar th,
+#toolbar td {
+    padding-bottom: 10px;
     text-align: right;
+}
+
+#toolbar td:first-child {
     padding-right: 10px;
 }
 
