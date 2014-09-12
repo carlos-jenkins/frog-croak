@@ -17,6 +17,7 @@
  *  under the License.
  */
 
+// Dygraph callback that Paints an horizontal line at given threshold
 function threshold_painter(thr) {
     return function(canvas, area, g) {
 
@@ -37,6 +38,13 @@ function threshold_painter(thr) {
     };
 }
 
+
+// Parse an ISO 8601 date using moment.js for cross-browser consisten results
+function parse_date(string) {
+    return moment(string).toDate();
+}
+
+
 // Create and configure graphs
 function config_graphs(t, config) {
 
@@ -49,6 +57,7 @@ function config_graphs(t, config) {
     for (var i = 0; i < 2; i++) {
 
         // Create graph
+        // FIXME: valueFormatter: add Mbps as formatter
         new Dygraph(
 
             // Containing div
@@ -68,6 +77,7 @@ function config_graphs(t, config) {
                 visibility: [i === 0, i === 1],
                 underlayCallback: threshold_painter(thresholds[i]),
                 animatedZooms: true,
+                xValueParser: parse_date,
             }
         );
 
