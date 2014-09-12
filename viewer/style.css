@@ -20,23 +20,32 @@
 /*
  * STRUCTURAL
  */
-#main {
-    width: 95%;
-    margin: 20px auto;
-    position: relative;
-}
-
-#graphs {
-}
-
 .graph {
+    position: absolute;
+    left: 10px;
+    right: 340px;
+    margin: 10px;
+}
+
+#graphs_download {
+    top: 10px;
+    bottom: 50%;
+}
+
+#graphs_upload {
+    top: 50%;
+    bottom: 10px;
 }
 
 #toolbar {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
     width: 320px;
+
+    border-left: 1px solid black;
+    height: 100%;
+    padding-left: 10px;
 }
 
 #toolbar table {
@@ -46,8 +55,13 @@
     margin-top: 50px;
 }
 
+#toolbar th,
+#toolbar td {
+    padding-bottom: 10px;
+}
+
 #toolbar th:first-child {
-    width: 33%;
+    width: 35%;
 }
 
 #toolbar td:first-child {
@@ -57,6 +71,10 @@
 
 #toolbar td:first-child::after {
     content: ":";
+}
+
+#toolbar td span {
+
 }
 
 #toolbar input.calendar {

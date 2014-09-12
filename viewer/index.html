@@ -18,129 +18,123 @@
 </head>
 <body>
 
-<div id="main">
+<div class="graph" id="graphs_download"></div>
+<div class="graph" id="graphs_upload"></div>
 
-    <div id="graphs">
-        <div class="graph" id="graphs_download"></div>
-        <div class="graph" id="graphs_upload"></div>
+<div id="toolbar">
+
+    <div id="identity">
+        <h1 id="title"></h1>
+        <h2 id="organization"></h2>
     </div>
 
-    <div id="toolbar">
+    <table id="range">
 
-        <div id="identity">
-            <h1 id="title"></h1>
-            <h2 id="organization"></h2>
-        </div>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
 
-        <table id="range">
+        <tbody>
+            <tr>
+                <td>
+                    <span class="title i18n" data-i18n="begin"></span>
+                </td>
+                <td>
+                    <input type="text" id="range_begin" class="calendar">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="title i18n" data-i18n="end"></span>
+                </td>
+                <td>
+                    <input type="text" id="range_end" class="calendar">
+                </td>
+            </tr>
+        </tbody>
 
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
+    </table>
 
-            <tbody>
-                <tr>
-                    <td>
-                        <span class="title i18n" data-i18n="begin"></span>
-                    </td>
-                    <td>
-                        <input type="text" id="range_begin" class="calendar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="title i18n" data-i18n="end"></span>
-                    </td>
-                    <td>
-                        <input type="text" id="range_end" class="calendar">
-                    </td>
-                </tr>
-            </tbody>
+    <table id="display">
 
-        </table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    <span class="title i18n" data-i18n="download"></span>
+                </th>
+                <th>
+                    <span class="title i18n" data-i18n="upload"></span>
+                </th>
+            </tr>
+        </thead>
 
-        <table id="display">
+        <tbody>
+            <tr>
+                <td>
+                    <span class="title i18n" data-i18n="contracted"></span>
+                </td>
+                <td>
+                    <span id="contracted_down"></span>
+                </td>
+                <td>
+                    <span id="contracted_up"></span>
+                </td>
+            </tr>
 
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>
-                        <span class="title i18n" data-i18n="download"></span>
-                    </th>
-                    <th>
-                        <span class="title i18n" data-i18n="upload"></span>
-                    </th>
-                </tr>
-            </thead>
+            <tr>
+                <td>
+                    <span class="title i18n" data-i18n="average"></span>
+                </td>
+                <td>
+                    <span id="average_down"></span>
+                </td>
+                <td>
+                    <span id="average_up"></span>
+                </td>
+            </tr>
 
-            <tbody>
-                <tr>
-                    <td>
-                        <span class="title i18n" data-i18n="contracted"></span>
-                    </td>
-                    <td>
-                        <span id="contracted_down"></span>
-                    </td>
-                    <td>
-                        <span id="contracted_up"></span>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <span class="title i18n" data-i18n="threshold"></span>
+                </td>
+                <td>
+                    <span id="threshold_down"></span>
+                </td>
+                <td>
+                    <span id="threshold_up"></span>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>
-                        <span class="title i18n" data-i18n="average"></span>
-                    </td>
-                    <td>
-                        <span id="average_down"></span>
-                    </td>
-                    <td>
-                        <span id="average_up"></span>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <span class="title i18n" data-i18n="minimum"></span>
+                </td>
+                <td>
+                    <span id="minimum_down"></span>
+                </td>
+                <td>
+                    <span id="minimum_up"></span>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>
-                        <span class="title i18n" data-i18n="threshold"></span>
-                    </td>
-                    <td>
-                        <span id="threshold_down"></span>
-                    </td>
-                    <td>
-                        <span id="threshold_up"></span>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <span class="title i18n" data-i18n="maximum"></span>
+                </td>
+                <td>
+                    <span id="maximum_down"></span>
+                </td>
+                <td>
+                    <span id="maximum_up"></span>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>
-                        <span class="title i18n" data-i18n="minimum"></span>
-                    </td>
-                    <td>
-                        <span id="minimum_down"></span>
-                    </td>
-                    <td>
-                        <span id="minimum_up"></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <span class="title i18n" data-i18n="maximum"></span>
-                    </td>
-                    <td>
-                        <span id="maximum_down"></span>
-                    </td>
-                    <td>
-                        <span id="maximum_up"></span>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-
+        </tbody>
+    </table>
 </div>
 
 </body>

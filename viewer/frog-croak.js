@@ -20,7 +20,7 @@
 // Create and configure graphs
 function config_graphs(t, config) {
 
-    // Create graphs
+    // Create download graph
     g1 = new Dygraph(
 
         // Containing div
@@ -41,7 +41,7 @@ function config_graphs(t, config) {
         }
     );
 
-        // Create graphs
+    // Create upload graphs
     g2 = new Dygraph(
 
         // Containing div
