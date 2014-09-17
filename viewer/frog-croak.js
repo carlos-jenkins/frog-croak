@@ -158,19 +158,6 @@ function config_graphs(t, config) {
         }
     );
 
-    g_download.ready(function() {
-        g_download.updateOptions({
-            zoomCallback: function(xmin, xmax, yranges) {
-                analyse_range(
-                    g_download,
-                    'download',
-                    config.download_guaranteed,
-                    1, xmin, xmax
-                );
-            }
-        });
-    });
-
     // Create UPLOAD graph
     var g_upload = new Dygraph(
 
@@ -200,14 +187,41 @@ function config_graphs(t, config) {
         }
     );
 
+    g_download.ready(function() {
+        g_download.updateOptions({
+            zoomCallback: function(xmin, xmax, yranges) {
+
+                // Zoom counter part graph
+                g_upload.updateOptions({
+                    dateWindow: [xmin, xmax]
+                });
+
+                // Analyse data in range
+                analyse_range(
+                    g_download,
+                    'download',
+                    config.download_guaranteed,
+                    1, xmin, xmax
+                );
+            }
+        });
+    });
+
     g_upload.ready(function() {
         g_upload.updateOptions({
             zoomCallback: function(xmin, xmax, yranges) {
+
+                // Zoom counter part graph
+                g_download.updateOptions({
+                    dateWindow: [xmin, xmax]
+                });
+
+                // Analyse data in range
                 analyse_range(
                     g_upload,
                     'upload',
                     config.upload_guaranteed,
-                    1, xmin, xmax
+                    2, xmin, xmax
                 );
             }
         });
