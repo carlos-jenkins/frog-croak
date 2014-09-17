@@ -90,6 +90,11 @@ function analyse_range(graph, category, threshold, vindex, start, end) {
     console.log('Non-compliance: ' + ((under / count) * 100));
     console.log('Minimum: ' + minv);
     console.log('Maximum: ' + maxv);
+
+    $('#' + category + '_average').text(format_speed(sum / count));
+    $('#' + category + '_non_compliance').text(format_percent(under / count));
+    $('#' + category + '_minimum').text(format_speed(minv));
+    $('#' + category + '_maximum').text(format_speed(maxv));
 }
 
 // Dygraph callback that Paints an horizontal line at given threshold
@@ -120,9 +125,14 @@ function parse_date(string) {
 }
 
 
-// Pretty-print the speed value
+// Pretty-print a speed value
 function format_speed(speed) {
-    return speed + ' Mbps';
+    return Number(speed).toFixed(2) + ' Mbps';
+}
+
+// Pretty print a percent value
+function format_percent(percent) {
+    return Number(percent * 100).toFixed(2) + ' %';
 }
 
 
