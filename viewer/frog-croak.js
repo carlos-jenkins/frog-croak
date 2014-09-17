@@ -235,6 +235,10 @@ function config_graphs(t, config) {
                 update_ui(xmin, xmax);
             }
         });
+
+        // Update UI of both graphs with initial range
+        extremes = g_upload.xAxisExtremes();
+        update_ui(extremes[0], extremes[1]);
     });
 }
 
