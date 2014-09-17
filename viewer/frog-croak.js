@@ -39,7 +39,7 @@ function threshold_painter(thr) {
 }
 
 
-// Parse an ISO 8601 date using moment.js for cross-browser consisten results
+// Parse an ISO 8601 date using moment.js for cross-browser consistent results
 function parse_date(string) {
     return moment(string).valueOf();
 }

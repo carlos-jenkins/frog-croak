@@ -9,5 +9,6 @@
     "average" : "Promedio",
     "guaranteed" : "Garantizada",
     "minimum" : "Minima",
-    "maximum" : "Maxima"
+    "maximum" : "Maxima",
+    "non_compliance" : "Incumplimiento"
 }

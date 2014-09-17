@@ -9,5 +9,6 @@
     "average" : "Average",
     "guaranteed" : "Guaranteed",
     "minimum" : "Minimum",
-    "maximum" : "Maximum"
+    "maximum" : "Maximum",
+    "non_compliance" : "Non compliance"
 }
