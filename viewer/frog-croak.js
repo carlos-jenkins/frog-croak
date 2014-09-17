@@ -17,8 +17,79 @@
  *  under the License.
  */
 
-function analyse_range(start, end) {
+// Binary search implementation for looking in Dygraph data to the approximate
+// point near xvalue.
+function binary_search(graph, xvalue, xmin, xmax) {
 
+    // Narrow search until one element remains
+    while (xmin < xmax) {
+
+        // Calculate mid-point
+        var xmid = Math.floor(xmin + ((xmax - xmin) / 2));
+
+        // Reduce the search
+        if (graph.getValue(xmid, 0) < xvalue) {
+            xmin = xmid + 1;
+        } else {
+            xmax = xmid;
+        }
+    }
+
+    // DEBUG
+    var result = graph.getValue(xmin, 0);
+    console.log('xvalue is: ' + xvalue);
+    console.log('xmin is: ' + xmin);
+    console.log('value at xmin is: ' + result);
+    console.log('Which is: ' + moment(result).format("YYYY/MM/DD HH:mm:ss"));
+    return xmin;
+}
+
+// Gather relevant information of data from given range
+function analyse_range(graph, category, threshold, vindex, start, end) {
+
+    // Find data indexes
+    var index_start = binary_search(
+        graph, start, 0, graph.numRows()
+    );
+    var index_end = binary_search(
+        graph, end, 0, graph.numRows()
+    );
+
+    // Analyse data
+    var count = 0;
+    var sum = 0;
+    var under = 0;
+    var minv = Number.MAX_VALUE;
+    var maxv = Number.MIN_VALUE;
+
+    var value;
+
+    for (var i = index_start; i <= index_end; i++) {
+        value = graph.getValue(i, vindex);
+        count++;
+        sum += value;
+        if (value < threshold) {
+            under++;
+        }
+        if (value < minv) {
+            minv = value;
+        }
+        if (value > maxv) {
+            maxv = value;
+        }
+    }
+
+    // DEBUG
+    console.log('count: ' + count);
+    console.log('sum: ' + sum);
+    console.log('under: ' + under);
+    console.log('minv: ' + minv);
+    console.log('maxv:' + maxv);
+    console.log('-------------');
+    console.log('Average: ' + (sum / count));
+    console.log('Non-compliance: ' + ((under / count) * 100));
+    console.log('Minimum: ' + minv);
+    console.log('Maximum: ' + maxv);
 }
 
 // Dygraph callback that Paints an horizontal line at given threshold
@@ -90,10 +161,12 @@ function config_graphs(t, config) {
     g_download.ready(function() {
         g_download.updateOptions({
             zoomCallback: function(xmin, xmax, yranges) {
-                alert("Zoomed to [" + xmin + ", " + xmax + "]");
-                for (var i = 0; i < g_download.numRows(); i++) {
-                    console.log(g_download.getValue(i, 0));
-                }
+                analyse_range(
+                    g_download,
+                    'download',
+                    config.download_guaranteed,
+                    1, xmin, xmax
+                );
             }
         });
     });
@@ -130,10 +203,12 @@ function config_graphs(t, config) {
     g_upload.ready(function() {
         g_upload.updateOptions({
             zoomCallback: function(xmin, xmax, yranges) {
-                alert("Zoomed to [" + xmin + ", " + xmax + "]");
-                for (var i = 0; i < g_upload.numRows(); i++) {
-                    console.log(g_upload.getValue(i, 0));
-                }
+                analyse_range(
+                    g_upload,
+                    'upload',
+                    config.upload_guaranteed,
+                    1, xmin, xmax
+                );
             }
         });
     });
