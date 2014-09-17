@@ -46,11 +46,11 @@ function binary_search(graph, xvalue, xmin, xmax) {
     }
 
     // DEBUG
-    var result = graph.getValue(xmin, 0);
-    console.log('xvalue is: ' + xvalue);
-    console.log('xmin is: ' + xmin);
-    console.log('value at xmin is: ' + result);
-    console.log('Which is: ' + moment(result).format("YYYY/MM/DD HH:mm:ss"));
+    //var result = graph.getValue(xmin, 0);
+    //console.log('xvalue is: ' + xvalue);
+    //console.log('xmin is: ' + xmin);
+    //console.log('value at xmin is: ' + result);
+    //console.log('Which is: ' + moment(result).format("YYYY/MM/DD HH:mm:ss"));
     return xmin;
 }
 
@@ -90,16 +90,16 @@ function analyse_range(graph, category, threshold, vindex, start, end) {
     }
 
     // DEBUG
-    console.log('count: ' + count);
-    console.log('sum: ' + sum);
-    console.log('under: ' + under);
-    console.log('minv: ' + minv);
-    console.log('maxv:' + maxv);
-    console.log('-------------');
-    console.log('Average: ' + (sum / count));
-    console.log('Non-compliance: ' + ((under / count) * 100));
-    console.log('Minimum: ' + minv);
-    console.log('Maximum: ' + maxv);
+    //console.log('count: ' + count);
+    //console.log('sum: ' + sum);
+    //console.log('under: ' + under);
+    //console.log('minv: ' + minv);
+    //console.log('maxv:' + maxv);
+    //console.log('-------------');
+    //console.log('Average: ' + (sum / count));
+    //console.log('Non-compliance: ' + ((under / count) * 100));
+    //console.log('Minimum: ' + minv);
+    //console.log('Maximum: ' + maxv);
 
     $('#' + category + '_average').text(format_speed(sum / count));
     $('#' + category + '_non_compliance').text(format_percent(under / count));
