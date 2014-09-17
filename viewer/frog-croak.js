@@ -17,6 +17,10 @@
  *  under the License.
  */
 
+function analyse_range(start, end) {
+
+}
+
 // Dygraph callback that Paints an horizontal line at given threshold
 function threshold_painter(thr) {
     return function(canvas, area, g) {
@@ -54,44 +58,85 @@ function format_speed(speed) {
 // Create and configure graphs
 function config_graphs(t, config) {
 
-    var graphs = ['download', 'upload'];
-    var thresholds = [
-        config.download_guaranteed,
-        config.upload_guaranteed
-    ];
+    // Create DOWNLOAD graph
+    var g_download = new Dygraph(
 
-    for (var i = 0; i < 2; i++) {
+        // Containing div
+        document.getElementById('graph_download'),
 
-        // Create graph
-        new Dygraph(
+        // CSV file
+        config.data,
 
-            // Containing div
-            document.getElementById('graph_' + graphs[i]),
-
-            // CSV file
-            config.data,
-
-            // Options
-            {
-                labels: [
-                    t('date'),
-                    t('download'),
-                    t('upload')
-                ],
-                ylabel: t('speed_mbps'),
-                visibility: [i === 0, i === 1],
-                underlayCallback: threshold_painter(thresholds[i]),
-                animatedZooms: true,
-                xValueParser: parse_date,
-                axes: {
-                    y: {
-                        valueFormatter: format_speed,
-                    },
+        // Options
+        {
+            labels: [
+                t('date'),
+                t('download'),
+                t('upload')
+            ],
+            ylabel: t('speed_mbps'),
+            visibility: [true, false],
+            animatedZooms: true,
+            xValueParser: parse_date,
+            axes: {
+                y: {
+                    valueFormatter: format_speed,
                 },
-            }
-        );
+            },
+            underlayCallback: threshold_painter(config.download_guaranteed)
+        }
+    );
 
-    }
+    g_download.ready(function() {
+        g_download.updateOptions({
+            zoomCallback: function(xmin, xmax, yranges) {
+                alert("Zoomed to [" + xmin + ", " + xmax + "]");
+                for (var i = 0; i < g_download.numRows(); i++) {
+                    console.log(g_download.getValue(i, 0));
+                }
+            }
+        });
+    });
+
+    // Create UPLOAD graph
+    var g_upload = new Dygraph(
+
+        // Containing div
+        document.getElementById('graph_upload'),
+
+        // CSV file
+        config.data,
+
+        // Options
+        {
+            labels: [
+                t('date'),
+                t('download'),
+                t('upload')
+            ],
+            ylabel: t('speed_mbps'),
+            visibility: [false, true],
+            animatedZooms: true,
+            xValueParser: parse_date,
+            axes: {
+                y: {
+                    valueFormatter: format_speed,
+                },
+            },
+            underlayCallback: threshold_painter(config.upload_guaranteed)
+        }
+    );
+
+    g_upload.ready(function() {
+        g_upload.updateOptions({
+            zoomCallback: function(xmin, xmax, yranges) {
+                alert("Zoomed to [" + xmin + ", " + xmax + "]");
+                for (var i = 0; i < g_upload.numRows(); i++) {
+                    console.log(g_upload.getValue(i, 0));
+                }
+            }
+        });
+    });
 }
 
 
