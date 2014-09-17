@@ -196,6 +196,7 @@ function config_graphs(t, config) {
 
     function update_ui(xmin, xmax) {
 
+        // Update statistics
         analyse_range(
             g_download,
             'download',
@@ -209,6 +210,10 @@ function config_graphs(t, config) {
             config.upload_guaranteed,
             2, xmin, xmax
         );
+
+        // Update calendars
+        $('#range_begin').datepicker('setDate', moment(xmin).toDate());
+        $('#range_end').datepicker('setDate', moment(xmax).toDate());
     }
 
     g_download.ready(function() {
@@ -239,6 +244,14 @@ function config_graphs(t, config) {
         // Update UI of both graphs with initial range
         extremes = g_upload.xAxisExtremes();
         update_ui(extremes[0], extremes[1]);
+
+        // One time calendar maximum boundary setup
+        $('#range_begin').datepicker(
+            'option', 'minDate', moment(extremes[0]).toDate()
+        );
+        $('#range_end').datepicker(
+            'option', 'maxDate', moment(extremes[1]).toDate()
+        );
     });
 }
 
