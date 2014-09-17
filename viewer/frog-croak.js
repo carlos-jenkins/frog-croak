@@ -17,6 +17,16 @@
  *  under the License.
  */
 
+// Pretty-print a speed value
+function format_speed(speed) {
+    return Number(speed).toFixed(2) + ' Mbps';
+}
+
+// Pretty print a percent value
+function format_percent(percent) {
+    return Number(percent * 100).toFixed(2) + ' %';
+}
+
 // Binary search implementation for looking in Dygraph data to the approximate
 // point near xvalue.
 function binary_search(graph, xvalue, xmin, xmax) {
@@ -118,23 +128,10 @@ function threshold_painter(thr) {
     };
 }
 
-
 // Parse an ISO 8601 date using moment.js for cross-browser consistent results
 function parse_date(string) {
     return moment(string).valueOf();
 }
-
-
-// Pretty-print a speed value
-function format_speed(speed) {
-    return Number(speed).toFixed(2) + ' Mbps';
-}
-
-// Pretty print a percent value
-function format_percent(percent) {
-    return Number(percent * 100).toFixed(2) + ' %';
-}
-
 
 // Create and configure graphs
 function config_graphs(t, config) {
@@ -197,6 +194,23 @@ function config_graphs(t, config) {
         }
     );
 
+    function update_ui(xmin, xmax) {
+
+        analyse_range(
+            g_download,
+            'download',
+            config.download_guaranteed,
+            1, xmin, xmax
+        );
+
+        analyse_range(
+            g_upload,
+            'upload',
+            config.upload_guaranteed,
+            2, xmin, xmax
+        );
+    }
+
     g_download.ready(function() {
         g_download.updateOptions({
             zoomCallback: function(xmin, xmax, yranges) {
@@ -205,14 +219,7 @@ function config_graphs(t, config) {
                 g_upload.updateOptions({
                     dateWindow: [xmin, xmax]
                 });
-
-                // Analyse data in range
-                analyse_range(
-                    g_download,
-                    'download',
-                    config.download_guaranteed,
-                    1, xmin, xmax
-                );
+                update_ui(xmin, xmax);
             }
         });
     });
@@ -225,19 +232,11 @@ function config_graphs(t, config) {
                 g_download.updateOptions({
                     dateWindow: [xmin, xmax]
                 });
-
-                // Analyse data in range
-                analyse_range(
-                    g_upload,
-                    'upload',
-                    config.upload_guaranteed,
-                    2, xmin, xmax
-                );
+                update_ui(xmin, xmax);
             }
         });
     });
 }
-
 
 // Perform setup for given configuration
 function config_setup(config) {
@@ -307,7 +306,6 @@ function config_setup(config) {
         console.log(msg);
     });
 }
-
 
 // Get configuration file
 function config_load() {
