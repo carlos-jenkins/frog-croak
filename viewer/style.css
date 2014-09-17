@@ -145,3 +145,6 @@ table caption {
 .ui-datepicker-next {
     text-align: center;
 }
+a.ui-priority-secondary {
+    color: lightgray;
+}

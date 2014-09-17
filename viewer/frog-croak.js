@@ -126,23 +126,41 @@ function config_setup(config) {
         $.datepicker.setDefaults(
             $.datepicker.regional[config.lang]
         );
+
         // Create calendar widgets
-        // FIXME: Configure calendar
-        $('.calendar').datepicker();
+        $('#range_begin').datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            changeMonth: true,
+            changeYear: true,
+            onClose: function(selected) {
+                $('#range_end').datepicker('option', 'minDate', selected);
+            }
+        });
+        $('#range_end').datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            changeMonth: true,
+            changeYear: true,
+            onClose: function(selected) {
+                $('#range_begin').datepicker('option', 'maxDate', selected);
+            }
+        });
+
+        /// Localize text
+        $.i18n.init({
+            lng: config.lang,
+            load: 'current',
+            fallbackLng: false,
+            resGetPath: 'locales/__lng__.json'
+        }, function(t) {
+            $('.i18n').i18n();
+            config_graphs(t, config);
+        });
     })
     .fail(function(xhr, opts, err) {
         msg = xhr.status + ' :: '+ err;
         console.log(msg);
-    });
-    /// Load localized text
-    $.i18n.init({
-        lng: config.lang,
-        load: 'current',
-        fallbackLng: false,
-        resGetPath: 'locales/__lng__.json'
-    }, function(t) {
-        $('.i18n').i18n();
-        config_graphs(t, config);
     });
 }
 
