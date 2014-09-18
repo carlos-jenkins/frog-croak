@@ -252,7 +252,9 @@ function config_graphs(t, config) {
                 dateWindow: [xmin, xmax]
             });
 
-            console.log('New range: ' + moment(xmin) + ' <-> ' + moment(xmax));
+            //console.log(
+            //    'New range: ' + moment(xmin) + ' <-> ' + moment(xmax)
+            //);
         }
     }
 
@@ -300,16 +302,16 @@ function config_graphs(t, config) {
                 var date = moment($(this).datepicker('getDate'));
                 var range = g_upload.xAxisRange();
 
-                console.log('#range_begin:' + date);
+                //console.log('#range_begin: ' + date);
+
+                // Update UI
+                update_ui(date.valueOf(), range[1], 'calendar');
 
                 // Set minimum date to end range
                 $('#range_end').datepicker(
                     'option', 'minDate',
                     date.add(1, 'd').toDate()
                 );
-
-                // Update UI
-                update_ui(date.valueOf(), range[1], 'calendar');
             }
         );
         $('#range_end').datepicker(
@@ -318,16 +320,16 @@ function config_graphs(t, config) {
                 var date = moment($(this).datepicker('getDate'));
                 var range = g_upload.xAxisRange();
 
-                console.log('#range_end:' + date);
+                //console.log('#range_end: ' + date);
 
-                // Set minimum date to end range
+                // Update UI
+                update_ui(range[0], date.valueOf(), 'calendar');
+
+                // Set minimum date to start range
                 $('#range_begin').datepicker(
                     'option', 'maxDate',
                     date.subtract(1, 'd').toDate()
                 );
-
-                // Update UI
-                update_ui(range[0], date.valueOf(), 'calendar');
             }
         );
     });
