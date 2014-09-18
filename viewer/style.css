@@ -148,3 +148,8 @@ table caption {
 a.ui-priority-secondary {
     color: #D3D3D3;
 }
+
+a.ui-state-active {
+    color: #FFFFFF;
+    background-color: #FF8D38;
+}
