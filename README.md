@@ -1,11 +1,5 @@
 WARNING: Work in progress.
 
-
-TODO
-====
-
-- Minimum and maximum annotations in graph.
-
 Future improvements
 ===================
 

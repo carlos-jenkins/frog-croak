@@ -85,6 +85,8 @@ function analyse_range(graph, category, threshold, vindex, start, end) {
     var under = 0;
     var minv = Number.MAX_VALUE;
     var maxv = Number.MIN_VALUE;
+    var minidx = -1;
+    var maxidx = -1;
 
     var value;
 
@@ -97,9 +99,11 @@ function analyse_range(graph, category, threshold, vindex, start, end) {
         }
         if (value < minv) {
             minv = value;
+            minidx = i;
         }
         if (value > maxv) {
             maxv = value;
+            maxidx = i;
         }
     }
 
@@ -115,10 +119,32 @@ function analyse_range(graph, category, threshold, vindex, start, end) {
     //console.log('Minimum: ' + minv);
     //console.log('Maximum: ' + maxv);
 
+    // Load statistics
     $('#' + category + '_average').text(format_speed(sum / count));
     $('#' + category + '_non_compliance').text(format_percent(under / count));
     $('#' + category + '_minimum').text(format_speed(minv));
     $('#' + category + '_maximum').text(format_speed(maxv));
+
+    // Show annotations on graph
+    if (minidx < 0 || maxidx < 0) {
+        return;
+    }
+
+    var series = graph.getLabels()[vindex];
+    graph.setAnnotations([
+        {
+            series: series,
+            x: graph.getValue(minidx, 0),
+            shortText: '-',
+            text: 'Minimum (' + format_speed(minv) + ')'
+        },
+        {
+            series: series,
+            x: graph.getValue(maxidx, 0),
+            shortText: '+',
+            text: 'Maximum (' + format_speed(maxv) + ')'
+        },
+    ]);
 }
 
 // Dygraph callback that Paints an horizontal line at given threshold
