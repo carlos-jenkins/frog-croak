@@ -15,8 +15,8 @@
 
 datepicker.regional['es'] = {
     closeText: 'Cerrar',
-    prevText: '&#x3C;Ant',
-    nextText: 'Sig&#x3E;',
+    prevText: 'Anterior',
+    nextText: 'Siguiente',
     currentText: 'Hoy',
     monthNames: [
         'enero','febrero','marzo','abril','mayo','junio',
