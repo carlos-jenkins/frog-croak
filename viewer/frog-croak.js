@@ -27,6 +27,20 @@ function format_percent(percent) {
     return Number(percent * 100).toFixed(2) + ' %';
 }
 
+// Pretty-print a datetime locale-aware
+function format_datetime(posix) {
+    // See http://momentjs.com/docs/#/displaying/format/
+    // Section "Localized formats"
+    return moment(posix).format('L LT');
+}
+
+// Pretty-print a date locale-aware
+function format_date(posix) {
+    // See http://momentjs.com/docs/#/displaying/format/
+    // Section "Localized formats"
+    return moment(posix).format('L');
+}
+
 // Binary search implementation for looking in Dygraph data to the approximate
 // point near xvalue.
 function binary_search(graph, xvalue, xmin, xmax) {
@@ -156,7 +170,12 @@ function config_graphs(t, config) {
             visibility: [true, false],
             animatedZooms: true,
             xValueParser: parse_date,
+            labelsSeparateLines: true,
+            labelsDivWidth: 150,
             axes: {
+                x: {
+                    valueFormatter: format_datetime,
+                },
                 y: {
                     valueFormatter: format_speed,
                 },
@@ -185,7 +204,12 @@ function config_graphs(t, config) {
             visibility: [false, true],
             animatedZooms: true,
             xValueParser: parse_date,
+            labelsSeparateLines: true,
+            labelsDivWidth: 150,
             axes: {
+                x: {
+                    valueFormatter: format_datetime,
+                },
                 y: {
                     valueFormatter: format_speed,
                 },
@@ -306,6 +330,9 @@ function config_setup(config) {
                 $('#range_begin').datepicker('option', 'maxDate', selected);
             }
         });
+
+        /// Localize dates (moment.js)
+        moment.locale(config.lang);
 
         /// Localize text
         $.i18n.init({
