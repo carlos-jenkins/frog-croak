@@ -218,7 +218,11 @@ function config_graphs(t, config) {
         }
     );
 
-    function update_ui(xmin, xmax) {
+    function update_ui(xmin, xmax, caller) {
+
+        if (typeof(caller) === 'undefined') {
+            caller = 'graph';
+        }
 
         // Update statistics
         analyse_range(
@@ -235,9 +239,21 @@ function config_graphs(t, config) {
             2, xmin, xmax
         );
 
-        // Update calendars
-        $('#range_begin').datepicker('setDate', moment(xmin).toDate());
-        $('#range_end').datepicker('setDate', moment(xmax).toDate());
+        if (caller === 'graph') {
+            // Update calendars when caller is graph zoom callback
+            $('#range_begin').datepicker('setDate', moment(xmin).toDate());
+            $('#range_end').datepicker('setDate', moment(xmax).toDate());
+        } else {
+            // Update graphs when caller is calendars onSelect callback
+            g_download.updateOptions({
+                dateWindow: [xmin, xmax]
+            });
+            g_upload.updateOptions({
+                dateWindow: [xmin, xmax]
+            });
+
+            console.log('New range: ' + moment(xmin) + ' <-> ' + moment(xmax));
+        }
     }
 
     g_download.ready(function() {
@@ -275,6 +291,44 @@ function config_graphs(t, config) {
         );
         $('#range_end').datepicker(
             'option', 'maxDate', moment(extremes[1]).toDate()
+        );
+
+        // One time configure calendar callback
+        $('#range_begin').datepicker(
+            'option', 'onSelect', function(date_text, inst) {
+
+                var date = moment($(this).datepicker('getDate'));
+                var range = g_upload.xAxisRange();
+
+                console.log('#range_begin:' + date);
+
+                // Set minimum date to end range
+                $('#range_end').datepicker(
+                    'option', 'minDate',
+                    date.add(1, 'd').toDate()
+                );
+
+                // Update UI
+                update_ui(date.valueOf(), range[1], 'calendar');
+            }
+        );
+        $('#range_end').datepicker(
+            'option', 'onSelect', function(date_text, inst) {
+
+                var date = moment($(this).datepicker('getDate'));
+                var range = g_upload.xAxisRange();
+
+                console.log('#range_end:' + date);
+
+                // Set minimum date to end range
+                $('#range_begin').datepicker(
+                    'option', 'maxDate',
+                    date.subtract(1, 'd').toDate()
+                );
+
+                // Update UI
+                update_ui(range[0], date.valueOf(), 'calendar');
+            }
         );
     });
 }
@@ -316,19 +370,13 @@ function config_setup(config) {
             showOtherMonths: true,
             selectOtherMonths: true,
             changeMonth: true,
-            changeYear: true,
-            onClose: function(selected) {
-                $('#range_end').datepicker('option', 'minDate', selected);
-            }
+            changeYear: true
         });
         $('#range_end').datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
             changeMonth: true,
-            changeYear: true,
-            onClose: function(selected) {
-                $('#range_begin').datepicker('option', 'maxDate', selected);
-            }
+            changeYear: true
         });
 
         /// Localize dates (moment.js)

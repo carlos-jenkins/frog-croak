@@ -4,8 +4,6 @@ WARNING: Work in progress.
 TODO
 ====
 
-- Callback in calendar to change graph.
-- Configure all date printing to use locale (Dygraph labels).
 - Minimum and maximum annotations in graph.
 
 Future improvements
