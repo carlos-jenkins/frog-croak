@@ -143,7 +143,7 @@ or similar) will run the *Collector* and a second (possible a VPS or external
 web server) will run the *Viewer*.
 
 In this case the ``cron`` job will require to copy the updated output file to
-the machine hosting the *Viewer*. There are too many ways to accompish this
+the machine hosting the *Viewer*. There are too many ways to accomplish this
 (``ftp``, ``scp``, ``rsync``, ``nfs``, etc). In this example we use ``scp``
 to copy to the host ``'external'``.
 
