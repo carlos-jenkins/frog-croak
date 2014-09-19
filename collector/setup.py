@@ -2,7 +2,7 @@
 
 from distutils.core import setup
 
-with open('README.rst') as fd:
+with open('README.txt') as fd:
     long_description = fd.read()
 
 
