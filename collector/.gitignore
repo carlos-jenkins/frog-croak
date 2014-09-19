@@ -3,4 +3,4 @@ __pycache__
 MANIFEST
 build/*
 dist/*
-
+*.egg-info
