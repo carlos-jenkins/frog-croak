@@ -17,7 +17,7 @@ About
 =====
 
 Frog Croak is a tool that allows users to monitor and analyse their Internet
-speed over time.
+connection speed over time.
 
 For a live demo visit: http://speed.jenkins.co.cr/
 
@@ -25,15 +25,37 @@ For a live demo visit: http://speed.jenkins.co.cr/
         :target: http://speed.jenkins.co.cr/
         :alt: Live Demo
 
+
 It is composed of two separate programs:
 
 - *Viewer*: A Javascript application that allows to display and analyse
-   gathered data.
+  gathered data.
 - *Collector*: A Python application that collects speed tests data samples over
   time.
 
+
 The *Viewer* and the *Collector* can be installed in different machines or in
 the same machine, depending on your setup.
+
+
+Features
+========
+
+- Independent download and upload graphs.
+- Interactive data graphs.
+- Selectable date range.
+- Data analysis in selected range:
+
+  - Average.
+  - Guaranteed speed threshold.
+  - Non-compliance percent.
+  - Maximum.
+  - Minimum.
+
+- Fully localized (date formats, UI text, etc).
+- Easily configurable (``config.json``).
+- Viewer is full client side Javascript and HTML, it doesn't require any
+  backend technology other than a simple web server.
 
 
 Installation
@@ -43,6 +65,7 @@ Collector
 +++++++++
 
 ::
+
     sudo pip install frog-croak
 
 
@@ -50,6 +73,7 @@ Viewer
 ++++++
 
 ::
+
     wget https://github.com/carlos-jenkins/frog-croak/archive/master.zip -O frog-croak.zip
     unzip frog-croak.zip
     mv frog-croak-master/viewer/ <install path>
