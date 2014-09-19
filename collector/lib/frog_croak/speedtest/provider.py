@@ -24,9 +24,9 @@ from __future__ import print_function
 from os.path import dirname
 from datetime import datetime
 
-from speedtest_cli import register_signal_handler
-from speedtest_cli import getConfig, closestServers, getBestServer
-from speedtest_cli import downloadSpeed, uploadSpeed
+from .speedtest_cli import register_signal_handler
+from .speedtest_cli import getConfig, closestServers, getBestServer
+from .speedtest_cli import downloadSpeed, uploadSpeed
 
 
 def Bps_to_mbps(speed):
