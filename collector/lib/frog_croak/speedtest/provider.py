@@ -79,12 +79,7 @@ def take_sample(verbose=True):
     if verbose:
         print('Testing upload speed', end='')
 
-    sizes = []
-    sizesizes = [int(25 * 1000 * 1000), int(5 * 1000 * 1000)]
-    for size in sizesizes:
-        for i in range(0, 25):
-            sizes.append(size)
-
+    sizes = ([250000] * 25) + ([500000] * 25)
     ulspeed = uploadSpeed(best['url'], sizes, not verbose)
 
     if verbose:
