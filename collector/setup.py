@@ -9,7 +9,7 @@ with open('README.txt') as fd:
 setup(
     # Main
     name='frog-croak',
-    version='1.0',
+    version='1.1',
     package_dir={'' : 'lib'},
     packages=[
         'frog_croak',
@@ -31,9 +31,14 @@ setup(
         'Intended Audience :: Telecommunications Industry',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: POSIX',
+        'Operating System :: POSIX :: Linux',
+        'Operating System :: Unix',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.4',
         'Topic :: Internet',
         'Topic :: System :: Monitoring',
+        'Topic :: Utilities',
     ],
 )

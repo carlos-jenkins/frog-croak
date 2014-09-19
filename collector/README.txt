@@ -9,8 +9,9 @@ For more information please visit: https://github.com/carlos-jenkins/frog-croak/
 For a live demo visit: http://speed.jenkins.co.cr/
 
 .. image:: https://raw.githubusercontent.com/carlos-jenkins/frog-croak/master/screenshot.png
-        :target: http://speed.jenkins.co.cr/
-        :alt: Live Demo
+   :width: 1024px
+   :target: http://speed.jenkins.co.cr/
+   :alt: Live Demo
 
 
 Frog Croak is composed of two separate programs:

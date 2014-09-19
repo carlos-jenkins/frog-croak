@@ -2,15 +2,25 @@
 Frog Croak
 ==========
 
-.. image:: https://pypip.in/v/frog-croak/badge.png
-        :target: https://pypi.python.org/pypi/frog-croak/
-        :alt: Latest Version
-.. image:: https://pypip.in/d/frog-croak/badge.png
-        :target: https://pypi.python.org/pypi/frog-croak/
-        :alt: Downloads
-.. image:: https://pypip.in/license/frog-croak/badge.png
-        :target: https://pypi.python.org/pypi/frog-croak/
-        :alt: License
+.. image:: https://pypip.in/py_versions/frog-croak/badge.png?style=original
+   :target: https://pypi.python.org/pypi/frog-croak/
+   :alt: Supported Python versions
+
+.. image:: https://pypip.in/version/frog-croak/badge.png?text=version
+   :target: https://pypi.python.org/pypi/frog-croak/
+   :alt: Latest Version
+
+.. image:: https://pypip.in/download/frog-croak/badge.png?style=original
+   :target: https://pypi.python.org/pypi/frog-croak/
+   :alt: Downloads
+
+.. image:: https://pypip.in/license/frog-croak/badge.png?style=original
+   :target: https://pypi.python.org/pypi/frog-croak/
+   :alt: License
+
+.. image:: https://pypip.in/status/frog-croak/badge.png?style=original
+   :target: https://pypi.python.org/pypi/frog-croak/
+   :alt: Status
 
 
 About
