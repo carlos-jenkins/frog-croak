@@ -73,7 +73,7 @@ def take_sample(verbose=True):
 
     if verbose:
         print()
-        print('Download: {:.2f} Mbps'.format((dlspeed / 1000 / 1000)))
+        print('Download: {:.2f} Mbps'.format((dlspeed / 1000 / 1000) * 8))
 
     # Get upload speed
     if verbose:
@@ -89,7 +89,7 @@ def take_sample(verbose=True):
 
     if verbose:
         print()
-        print('Upload: {:.2f} Mbps'.format((ulspeed / 1000 / 1000)))
+        print('Upload: {:.2f} Mbps'.format((ulspeed / 1000 / 1000) * 8))
 
     # Set timestamp
     now = datetime.now().replace(microsecond=0).isoformat()
