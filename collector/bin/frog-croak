@@ -16,6 +16,10 @@
 # specific language governing permissions and limitations
 # under the License.
 
+"""
+Frog Croak main collector script.
+"""
+
 from frog_croak.arguments import parse_args
 from frog_croak.speedtest.provider import take_sample
 
@@ -25,7 +29,7 @@ def main():
     data = take_sample(not parsed.silent)
     with open(parsed.output, 'a') as out:
         out.write(
-            '{timestamp},{download},{upload}\n'.format(**data)
+            '{timestamp},{download:.2f},{upload:.2f}\n'.format(**data)
         )
 
 

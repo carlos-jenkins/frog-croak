@@ -29,7 +29,17 @@ from speedtest_cli import getConfig, closestServers, getBestServer
 from speedtest_cli import downloadSpeed, uploadSpeed
 
 
+def Bps_to_mbps(speed):
+    """
+    Utility function to convert Bytes per second to Megabits per second.
+    """
+    return (speed / 1000 / 1000) * 8
+
+
 def take_sample(verbose=True):
+    """
+    Take a speed sample using speedtest_cli module.
+    """
 
     # Register CTRL-C signal handler
     register_signal_handler()
@@ -70,10 +80,11 @@ def take_sample(verbose=True):
                 '{}/random{}x{}.jpg'.format(dirname(best['url']), size, size)
             )
     dlspeed = downloadSpeed(urls, not verbose)
+    dlspeed = Bps_to_mbps(dlspeed)
 
     if verbose:
         print()
-        print('Download: {:.2f} Mbps'.format((dlspeed / 1000 / 1000) * 8))
+        print('Download: {:.2f} Mbps'.format(dlspeed))
 
     # Get upload speed
     if verbose:
@@ -81,10 +92,11 @@ def take_sample(verbose=True):
 
     sizes = ([250000] * 25) + ([500000] * 25)
     ulspeed = uploadSpeed(best['url'], sizes, not verbose)
+    ulspeed = Bps_to_mbps(ulspeed)
 
     if verbose:
         print()
-        print('Upload: {:.2f} Mbps'.format((ulspeed / 1000 / 1000) * 8))
+        print('Upload: {:.2f} Mbps'.format(ulspeed))
 
     # Set timestamp
     now = datetime.now().replace(microsecond=0).isoformat()
