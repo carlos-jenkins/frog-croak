@@ -89,7 +89,7 @@ Viewer
     mv frog-croak-master/viewer/ [install path]
 
 
-Note: ``[install path]`` must be server by a web server. For example, if using
+Note: ``[install path]`` must be served by a web server. For example, if using
 Apache in Ubuntu, it could be something like ``/var/www/html/speed/``.
 
 
