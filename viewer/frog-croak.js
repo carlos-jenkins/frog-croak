@@ -69,7 +69,7 @@ function binary_search(graph, xvalue, xmin, xmax) {
 }
 
 // Gather relevant information of data from given range
-function analyse_range(graph, category, threshold, vindex, start, end) {
+function analyse_range(t, graph, category, threshold, vindex, start, end) {
 
     // Find data indexes
     var index_start = binary_search(
@@ -136,13 +136,13 @@ function analyse_range(graph, category, threshold, vindex, start, end) {
             series: series,
             x: graph.getValue(minidx, 0),
             shortText: '-',
-            text: 'Minimum (' + format_speed(minv) + ')'
+            text: t('minimum') + ' (' + format_speed(minv) + ')',
         },
         {
             series: series,
             x: graph.getValue(maxidx, 0),
             shortText: '+',
-            text: 'Maximum (' + format_speed(maxv) + ')'
+            text: t('maximum') + ' (' + format_speed(maxv) + ')',
         },
     ]);
 }
@@ -252,15 +252,13 @@ function config_graphs(t, config) {
 
         // Update statistics
         analyse_range(
-            g_download,
-            'download',
+            t, g_download, 'download',
             config.download_guaranteed,
             1, xmin, xmax
         );
 
         analyse_range(
-            g_upload,
-            'upload',
+            t, g_upload, 'upload',
             config.upload_guaranteed,
             2, xmin, xmax
         );

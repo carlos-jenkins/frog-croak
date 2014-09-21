@@ -113,6 +113,7 @@ Call the ``frog-croak`` binary each time you want to get a speed sample.
       --silent         Do not display information on utility execution.
       --output OUTPUT  CSV out file.
 
+
 This will add to (or create) the new entry to the output file
 (by default ``data.csv``). This file name must be configured in the *Viewer*.
 
@@ -190,7 +191,7 @@ installation directory. Edit this file to meet your needs:
 :data: URL to speed samples file. This file is the one updated by the
  *Collector*. This is **NOT** a path in the file system, it is a URL from which
  that Javascript can download the file.
-:lang: Language and localization setting. You language needs to be available
+:lang: Language and localization setting. Your language needs to be available
  in ``locales/``. Contributions are welcome.
 :title: Document title. This will appear in the right bar and document title.
 :organization: Optional name of your organization. Or whatever you want to be
