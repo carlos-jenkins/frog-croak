@@ -2,26 +2,15 @@
 Frog Croak
 ==========
 
-.. image:: https://img.shields.io/pypi/pyversions/frog-croak.svg?style=original
-   :target: https://pypi.python.org/pypi/frog-croak/
-   :alt: Supported Python versions
+**DEPRECATED**
 
-.. image:: https://img.shields.io/pypi/v/frog-croak.svg?label=version
-   :target: https://pypi.python.org/pypi/frog-croak/
-   :alt: Latest Version
+This project is no longer maintained.
 
-.. image:: https://img.shields.io/pypi/dm/frog-croak.svg?style=original
-   :target: https://pypi.python.org/pypi/frog-croak/
-   :alt: Downloads
+There is no direct replacement, but a better approach could be to parse your configuration options and validate its schema using Cerberus:
 
-.. image:: https://img.shields.io/pypi/l/frog-croak.svg?style=original
-   :target: https://pypi.python.org/pypi/frog-croak/
-   :alt: License
+https://docs.python-cerberus.org/
 
-.. image:: https://img.shields.io/pypi/status/frog-croak.svg?style=original
-   :target: https://pypi.python.org/pypi/frog-croak/
-   :alt: Status
-
+-----------------------
 
 About
 =====
